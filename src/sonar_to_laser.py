@@ -22,6 +22,7 @@ Scan_msg.header.frame_id = "sonar_link"
 Scan_msg.angle_min = math.pi/4 - 0.05
 Scan_msg.angle_max = math.pi/4 + 0.05
 Scan_msg.angle_increment = 0.1
+Scan_msg.time_increment = 0.0
 Scan_msg.range_min = 0.05
 Scan_msg.range_max = 0.5
 
