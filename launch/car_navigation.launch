@@ -1,0 +1,18 @@
+<launch>
+
+  <master auto="start"/>
+
+	<!-- bringup the car and start mapping node -->
+	<include file="$(find car_arduino)/launch/car_bringup.launch" />
+	<include file="$(find car_arduino)/launch/car_mapping.launch" />
+
+	<!-- start the move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find car_arduino)/cfg/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find car_arduino)/cfg/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find car_arduino)/cfg/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find car_arduino)/cfg/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find car_arduino)/cfg/base_local_planner_params.yaml" command="load" />
+  </node>
+
+</launch>

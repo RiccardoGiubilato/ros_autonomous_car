@@ -1,0 +1,19 @@
+<launch>
+
+	<param name="use_sim_time" value="true" />
+
+	<!-- publish static transform between map and world -->
+	<node pkg="tf" type="static_transform_publisher" name="fixed_map" args="0 0 0 0 0 0 /world /map 100" />
+
+	<!-- map publisher node -->
+	<param name="occupancy_rate" value="15" />
+	<param name="grid_resolution" value="0.1" />
+	<param name="grid_width" value="100" />
+	<param name="grid_height" value="100" />
+	<node pkg="car_arduino" type="laser_to_occupancy_grid.py" name="map_publisher" output="screen" />
+
+  <!-- TEMPORARY -->
+	<node pkg="car_arduino" type="sonar_to_laser.py" name="sonar_to_laser_node" output="screen" />
+	<node pkg="rviz" type="rviz" name="rviz" />
+
+</launch>
