@@ -1,12 +1,17 @@
 <launch>
 
-	<!-- connect to the arduino via rosserial -->
-  <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
-    <param name="port" value="/dev/ttyUSB0"/>
-    <param name="baud" value="57600"/>
+  <!-- connect to the arduino via rosserial -->
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node" output="screen">
+    <!--param name="port" value="/dev/ttyUSB0"/>
+    <param name="baud" value="57600"/-->
   </node>
   
+  <!-- definition of static transforms -->
+  <node pkg="tf" type="static_transform_publisher" name="sonar" args="0.13 0 0 0 0 0 /car_base_link /sonar_link 100" />
+
   <!-- launch teleop node -->
   <node pkg="car_arduino" type="teleop.py" name="car_teleop" />
+  <node pkg="car_arduino" type="odom.py"   name="car_odom"   />
+  <node pkg="car_arduino" type="sonar_to_laser.py" name="car_scan" />
 
 </launch>
