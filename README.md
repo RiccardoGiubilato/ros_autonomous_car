@@ -26,6 +26,6 @@ If you think this code can help to build your own ROS powered rc car please feel
 * _car-mapping.launch_: run mapping node
 
 ##### Notes
-If you find this code useful and you want to check my recent publications, please visit my 
+If you find this code useful for academic purposes and you want to check my recent publications, please visit my 
 ResearchGate page at this [link](https://www.researchgate.net/profile/Riccardo_Giubilato).
 If you have any questions, my email address is riccardo.giubilato@gmail.com
